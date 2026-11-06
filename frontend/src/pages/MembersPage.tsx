@@ -345,7 +345,7 @@ export const MembersPage: React.FC = () => {
             required
             value={form.identifier}
             onChange={(e) => setForm({ ...form, identifier: e.target.value })}
-            placeholder={form.role === 'STUDENT' ? 'e.g. 1MS21CS099' : 'e.g. FAC-CSE-105'}
+            placeholder={form.role === 'STUDENT' ? 'e.g. 1ME23IS027' : 'e.g. FAC-CSE-105'}
           />
 
           <div className="grid grid-cols-2 gap-3">
@@ -372,7 +372,7 @@ export const MembersPage: React.FC = () => {
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="email@college.edu"
+              placeholder="student@msec.ac.in"
             />
             <Input
               label="Mobile Number"

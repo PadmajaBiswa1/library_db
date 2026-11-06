@@ -84,9 +84,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           />
           <div className="min-w-0 flex-1">
             <h1 className="font-heading font-bold text-sm tracking-tight text-[#1A1523] truncate leading-tight">
-              LibraryHub
+              MSEC Central Library
             </h1>
-            <p className="font-body text-[11px] text-[#5C5468] truncate">Central Campus Library</p>
+            <p className="font-body text-[11px] text-[#5C5468] truncate">M.S. Engineering College</p>
           </div>
         </div>
 
