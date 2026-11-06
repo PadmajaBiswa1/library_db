@@ -20,18 +20,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white border-b border-slate-200/80 px-4 md:px-8 flex items-center justify-between">
+    <header className="sticky top-0 z-30 h-16 bg-white border-b border-[#E3DEE9] px-4 md:px-8 flex items-center justify-between">
       <div className="flex items-center gap-3">
         <button
           onClick={onOpenSidebar}
-          className="md:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100"
+          className="md:hidden p-2 rounded-lg text-[#5C5468] hover:bg-[#EDE4F5]/50 hover:text-[#4E2478]"
           aria-label="Open menu"
         >
           <Menu className="w-5 h-5" />
         </button>
 
-        <div className="hidden sm:flex items-center gap-2 text-xs text-slate-500 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
-          <Clock className="w-3.5 h-3.5 text-slate-400" />
+        <div className="hidden sm:flex items-center gap-2 text-xs font-body text-[#5C5468] bg-[#FAF8FC] border border-[#E3DEE9] px-3 py-1.5 rounded-lg">
+          <Clock className="w-3.5 h-3.5 text-[#4E2478]" />
           <span>Academic Year 2025–26 • Central Campus Library</span>
         </div>
       </div>
@@ -40,27 +40,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
         {/* Notification Bell */}
         <Link
           to="/notifications"
-          className="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors"
+          className="relative p-2 rounded-lg text-[#5C5468] hover:bg-[#EDE4F5]/50 hover:text-[#4E2478] transition-colors"
           title="Notifications & Alerts"
         >
           <Bell className="w-5 h-5" />
           {unreadCount > 0 && (
-            <span className="absolute top-1.5 right-1.5 min-w-[16px] h-4 px-1 bg-rose-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+            <span className="absolute top-1.5 right-1.5 min-w-[16px] h-4 px-1 bg-[#F30137] text-white text-[10px] font-body font-bold rounded-full flex items-center justify-center">
               {unreadCount}
             </span>
           )}
         </Link>
 
-        <div className="h-6 w-px bg-slate-200 mx-1" />
+        <div className="h-6 w-px bg-[#E3DEE9] mx-1" />
 
         {/* User profile */}
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center text-xs font-semibold">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-full bg-[#4E2478] text-white flex items-center justify-center text-xs font-body font-semibold">
             <User className="w-4 h-4" />
           </div>
           <div className="hidden sm:block text-left">
-            <p className="text-xs font-semibold text-slate-800 leading-tight">Chief Librarian</p>
-            <p className="text-[11px] text-slate-400">lib.admin@institution.edu</p>
+            <p className="font-body text-xs font-semibold text-[#1A1523] leading-tight">Chief Librarian</p>
+            <p className="font-body text-[11px] text-[#5C5468]">lib.admin@institution.edu</p>
           </div>
         </div>
       </div>

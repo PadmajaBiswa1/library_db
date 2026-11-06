@@ -115,8 +115,10 @@ export const DigitalLibraryPage: React.FC = () => {
       {/* Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">Digital Library & Learning Resources</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h1 className="font-heading font-bold text-xl text-[#1A1523] tracking-tight">
+            Digital Library & Learning Resources
+          </h1>
+          <p className="font-body text-xs text-[#5C5468] mt-0.5">
             Institutional repository for Open Access e-books, research publications, journals, and lecture notes.
           </p>
         </div>
@@ -126,7 +128,7 @@ export const DigitalLibraryPage: React.FC = () => {
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
+      <div className="bg-white rounded-xl border border-[#E3DEE9] p-4 shadow-xs flex flex-col md:flex-row gap-3 items-center justify-between">
         <form onSubmit={handleSearchSubmit} className="flex-1 w-full md:max-w-md flex gap-2">
           <Input
             placeholder="Search by title, author, or subject keyword..."
@@ -140,14 +142,14 @@ export const DigitalLibraryPage: React.FC = () => {
         </form>
 
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 text-xs text-slate-500">
-            <Filter className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-1.5 font-body text-xs text-[#5C5468]">
+            <Filter className="w-3.5 h-3.5 text-[#4E2478]" />
             <span>Category:</span>
           </div>
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="rounded-lg border border-slate-300 text-xs px-2.5 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400"
+            className="rounded-lg border border-[#E3DEE9] font-body text-xs px-2.5 py-1.5 bg-white text-[#1A1523] focus:border-[#4E2478]"
           >
             <option value="ALL">All Categories</option>
             <option value="Computer Science">Computer Science</option>
@@ -159,7 +161,7 @@ export const DigitalLibraryPage: React.FC = () => {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="rounded-lg border border-slate-300 text-xs px-2.5 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400"
+            className="rounded-lg border border-[#E3DEE9] font-body text-xs px-2.5 py-1.5 bg-white text-[#1A1523] focus:border-[#4E2478]"
           >
             <option value="ALL">All Types</option>
             <option value="E_BOOK">E-Books</option>
@@ -172,9 +174,9 @@ export const DigitalLibraryPage: React.FC = () => {
 
       {/* Resource Cards Grid */}
       {loading ? (
-        <div className="text-center py-12 text-slate-500 text-xs">Loading digital resources...</div>
+        <div className="text-center py-12 text-[#5C5468] text-xs font-body">Loading digital resources...</div>
       ) : resources.length === 0 ? (
-        <div className="bg-white rounded-lg border border-slate-200 p-12 text-center text-slate-500 text-xs">
+        <div className="bg-white rounded-xl border border-[#E3DEE9] p-12 text-center text-[#5C5468] text-xs font-body">
           No digital learning resources found.
         </div>
       ) : (
@@ -182,47 +184,47 @@ export const DigitalLibraryPage: React.FC = () => {
           {resources.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm flex flex-col justify-between hover:border-slate-300 transition"
+              className="bg-white rounded-xl border border-[#E3DEE9] p-4 shadow-xs flex flex-col justify-between hover:border-[#4E2478]/30 transition"
             >
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-start gap-2.5">
-                    <div className="w-8 h-8 rounded bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-8 h-8 rounded bg-[#EDE4F5] text-[#4E2478] flex items-center justify-center shrink-0 mt-0.5">
                       <FileText className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-900 text-sm leading-snug">{item.title}</h3>
-                      <p className="text-[11px] text-slate-500 mt-0.5">
+                      <h3 className="font-heading font-semibold text-[#1A1523] text-sm leading-snug">{item.title}</h3>
+                      <p className="font-body text-[11px] text-[#5C5468] mt-0.5">
                         By {item.author} • {item.publishedYear}
                       </p>
                     </div>
                   </div>
-                  <Badge variant="info">{item.resourceType.replace('_', ' ')}</Badge>
+                  <Badge variant="primary">{item.resourceType.replace('_', ' ')}</Badge>
                 </div>
 
-                <p className="text-xs text-slate-600 mt-3 line-clamp-2">{item.description}</p>
+                <p className="font-body text-xs text-[#5C5468] mt-3 line-clamp-2">{item.description}</p>
 
-                <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-                  <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium">
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-body">
+                  <span className="bg-[#EDE4F5] text-[#4E2478] px-2 py-0.5 rounded font-medium">
                     {item.category}
                   </span>
-                  <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">
+                  <span className="bg-[#FAF8FC] text-[#5C5468] border border-[#E3DEE9] px-2 py-0.5 rounded">
                     {item.subject}
                   </span>
-                  <span className="bg-slate-50 text-slate-500 px-2 py-0.5 rounded font-mono border border-slate-200">
+                  <span className="bg-[#FAF8FC] text-[#5C5468] px-2 py-0.5 rounded font-mono border border-[#E3DEE9]">
                     {item.fileFormat} • {item.fileSize}
                   </span>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400 font-mono">
+              <div className="mt-4 pt-3 border-t border-[#E3DEE9] flex items-center justify-between">
+                <span className="font-body text-[11px] text-[#5C5468] font-mono">
                   {item.downloadCount} reads/downloads
                 </span>
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="p-1 text-slate-400 hover:text-rose-600 transition"
+                    className="p-1 text-[#5C5468] hover:text-[#D6264C] transition"
                     title="Remove resource"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -231,7 +233,7 @@ export const DigitalLibraryPage: React.FC = () => {
                     size="sm"
                     variant="outline"
                     onClick={() => handleDownloadClick(item)}
-                    icon={<Download className="w-3.5 h-3.5" />}
+                    icon={<Download className="w-3.5 h-3.5 text-[#4E2478]" />}
                   >
                     Access Document
                   </Button>
@@ -244,7 +246,7 @@ export const DigitalLibraryPage: React.FC = () => {
 
       {/* Upload Resource Modal */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Upload Digital Learning Resource">
-        <form onSubmit={handleUploadSubmit} className="space-y-3.5 text-xs">
+        <form onSubmit={handleUploadSubmit} className="space-y-3.5 text-xs font-body">
           <Input
             label="Document / Paper Title"
             required
@@ -272,9 +274,9 @@ export const DigitalLibraryPage: React.FC = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-700 mb-1">Resource Category</label>
+              <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">Resource Category</label>
               <select
-                className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+                className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value as BookCategory })}
               >
@@ -289,9 +291,9 @@ export const DigitalLibraryPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-700 mb-1">Resource Type</label>
+              <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">Resource Type</label>
               <select
-                className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+                className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
                 value={form.resourceType}
                 onChange={(e) => setForm({ ...form, resourceType: e.target.value as DigitalResourceType })}
               >
@@ -329,9 +331,9 @@ export const DigitalLibraryPage: React.FC = () => {
           />
 
           <div>
-            <label className="block text-[11px] font-semibold text-slate-700 mb-1">Abstract / Summary</label>
+            <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">Abstract / Summary</label>
             <textarea
-              className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+              className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
               rows={2}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -339,7 +341,7 @@ export const DigitalLibraryPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#E3DEE9]">
             <Button type="button" variant="outline" size="sm" onClick={() => setIsModalOpen(false)}>
               Cancel
             </Button>

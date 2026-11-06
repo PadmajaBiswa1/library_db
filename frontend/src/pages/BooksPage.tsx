@@ -147,8 +147,10 @@ export const BooksPage: React.FC = () => {
       {/* Page Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">Book Catalog & Management</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h1 className="font-heading font-bold text-xl text-[#1A1523] tracking-tight">
+            Book Catalog & Management
+          </h1>
+          <p className="font-body text-xs text-[#5C5468] mt-0.5">
             Maintain catalog records, physical shelf coordinates, editions, and inventory counts.
           </p>
         </div>
@@ -158,7 +160,7 @@ export const BooksPage: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
+      <div className="bg-white rounded-xl border border-[#E3DEE9] p-4 shadow-xs flex flex-col md:flex-row gap-3 items-center justify-between">
         <form onSubmit={handleSearchSubmit} className="flex-1 w-full md:max-w-md flex gap-2">
           <Input
             placeholder="Search by title, author, ISBN, publisher, or subject..."
@@ -172,14 +174,14 @@ export const BooksPage: React.FC = () => {
         </form>
 
         <div className="w-full md:w-auto flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-1.5 text-xs text-slate-500">
-            <Filter className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-1.5 font-body text-xs text-[#5C5468]">
+            <Filter className="w-3.5 h-3.5 text-[#4E2478]" />
             <span>Category:</span>
           </div>
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="rounded-lg border border-slate-300 text-xs px-2.5 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400"
+            className="rounded-lg border border-[#E3DEE9] font-body text-xs px-2.5 py-1.5 bg-white text-[#1A1523] focus:outline-none focus:border-[#4E2478]"
           >
             <option value="ALL">All Categories</option>
             <option value="Computer Science">Computer Science</option>
@@ -196,7 +198,7 @@ export const BooksPage: React.FC = () => {
           <select
             value={availabilityFilter}
             onChange={(e) => setAvailabilityFilter(e.target.value)}
-            className="rounded-lg border border-slate-300 text-xs px-2.5 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400"
+            className="rounded-lg border border-[#E3DEE9] font-body text-xs px-2.5 py-1.5 bg-white text-[#1A1523] focus:outline-none focus:border-[#4E2478]"
           >
             <option value="ALL">All Availability</option>
             <option value="AVAILABLE">Available on Shelf</option>
@@ -206,10 +208,10 @@ export const BooksPage: React.FC = () => {
       </div>
 
       {/* Books Table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-[#E3DEE9] shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+          <table className="w-full text-left font-body text-xs">
+            <thead className="bg-[#FAF8FC] border-b border-[#E3DEE9] text-[11px] font-semibold text-[#5C5468] uppercase tracking-wider">
               <tr>
                 <th className="px-4 py-3">Book Details</th>
                 <th className="px-4 py-3">Category & Subject</th>
@@ -220,51 +222,51 @@ export const BooksPage: React.FC = () => {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-[#E3DEE9]">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-8 text-slate-500">
+                  <td colSpan={7} className="text-center py-8 text-[#5C5468]">
                     Loading books...
                   </td>
                 </tr>
               ) : books.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-8 text-slate-500">
+                  <td colSpan={7} className="text-center py-8 text-[#5C5468]">
                     No books found matching the query.
                   </td>
                 </tr>
               ) : (
                 books.map((book) => (
-                  <tr key={book.id} className="hover:bg-slate-50/80 transition-colors">
+                  <tr key={book.id} className="hover:bg-[#EDE4F5]/30 transition-colors">
                     <td className="px-4 py-3.5">
                       <div className="flex items-start gap-2.5">
-                        <div className="w-7 h-7 rounded bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="w-7 h-7 rounded bg-[#EDE4F5] text-[#4E2478] flex items-center justify-center shrink-0 mt-0.5">
                           <BookOpen className="w-3.5 h-3.5" />
                         </div>
                         <div>
-                          <p className="font-semibold text-slate-900 leading-tight">{book.title}</p>
-                          <p className="text-[11px] text-slate-500 mt-0.5">
+                          <p className="font-semibold text-[#1A1523] leading-tight">{book.title}</p>
+                          <p className="text-[11px] text-[#5C5468] mt-0.5">
                             By {book.author} • ISBN: <span className="font-mono">{book.isbn}</span>
                           </p>
                         </div>
                       </div>
                     </td>
                     <td className="px-4 py-3.5">
-                      <p className="font-medium text-slate-800">{book.category}</p>
-                      <p className="text-[11px] text-slate-500">{book.subject}</p>
+                      <p className="font-medium text-[#1A1523]">{book.category}</p>
+                      <p className="text-[11px] text-[#5C5468]">{book.subject}</p>
                     </td>
-                    <td className="px-4 py-3.5 text-slate-600">
-                      <p>{book.publisher}</p>
-                      <p className="text-[11px] text-slate-400">{book.edition} ({book.publicationYear})</p>
+                    <td className="px-4 py-3.5 text-[#5C5468]">
+                      <p className="text-[#1A1523]">{book.publisher}</p>
+                      <p className="text-[11px] text-[#5C5468]">{book.edition} ({book.publicationYear})</p>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className="font-mono text-[11px] bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                      <span className="font-mono text-[11px] bg-[#FAF8FC] px-2 py-1 rounded border border-[#E3DEE9] text-[#1A1523]">
                         {book.shelfLocation}
                       </span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className="font-semibold text-slate-800">{book.availableCopies}</span>
-                      <span className="text-slate-400 text-[11px]"> / {book.totalCopies}</span>
+                      <span className="font-heading font-bold text-sm text-[#1A1523]">{book.availableCopies}</span>
+                      <span className="text-[#5C5468] text-[11px]"> / {book.totalCopies}</span>
                     </td>
                     <td className="px-4 py-3.5">
                       <Badge variant={book.availableCopies > 0 ? 'success' : 'danger'}>
@@ -275,14 +277,14 @@ export const BooksPage: React.FC = () => {
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={() => handleEditClick(book)}
-                          className="p-1 text-slate-400 hover:text-slate-700 transition"
+                          className="p-1 text-[#5C5468] hover:text-[#4E2478] transition"
                           title="Edit Book Details"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleDelete(book.id)}
-                          className="p-1 text-slate-400 hover:text-rose-600 transition"
+                          className="p-1 text-[#5C5468] hover:text-[#D6264C] transition"
                           title="Delete Book"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -307,7 +309,7 @@ export const BooksPage: React.FC = () => {
         }}
         title={isEditOpen ? 'Edit Book Details' : 'Add New Book to Catalog'}
       >
-        <form onSubmit={isEditOpen ? handleEditSubmit : handleCreateSubmit} className="space-y-3.5 text-xs">
+        <form onSubmit={isEditOpen ? handleEditSubmit : handleCreateSubmit} className="space-y-3.5 text-xs font-body">
           <Input
             label="Book Title"
             required
@@ -352,9 +354,9 @@ export const BooksPage: React.FC = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-700 mb-1">Category</label>
+              <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">Category</label>
               <select
-                className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+                className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value as BookCategory })}
               >
@@ -420,7 +422,7 @@ export const BooksPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#E3DEE9]">
             <Button
               type="button"
               variant="outline"

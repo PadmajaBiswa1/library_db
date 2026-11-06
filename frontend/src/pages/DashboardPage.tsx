@@ -43,57 +43,57 @@ export const DashboardPage: React.FC = () => {
       label: 'Total Catalog Copies',
       value: stats?.totalBooks ?? 0,
       icon: BookOpen,
-      color: 'bg-blue-600',
-      sub: 'All physical volumes',
+      iconBg: 'bg-[#EDE4F5] text-[#4E2478]',
+      sub: 'All physical holdings',
     },
     {
       label: 'Available on Shelf',
       value: stats?.availableBooks ?? 0,
       icon: BookCheck,
-      color: 'bg-emerald-600',
-      sub: 'Ready for loan',
+      iconBg: 'bg-emerald-50 text-[#1C8A5C]',
+      sub: 'Ready for circulation',
     },
     {
       label: 'Actively Issued',
       value: stats?.issuedBooks ?? 0,
       icon: Clock,
-      color: 'bg-indigo-600',
-      sub: 'In patrons possession',
+      iconBg: 'bg-[#EDE4F5] text-[#4E2478]',
+      sub: 'In patron possession',
     },
     {
       label: 'Overdue Books',
       value: stats?.overdueBooks ?? 0,
       icon: AlertTriangle,
-      color: 'bg-rose-600',
-      sub: 'Action required',
+      iconBg: 'bg-[#FDE2E7] text-[#D6264C]',
+      sub: 'Immediate action required',
     },
     {
       label: 'Registered Patrons',
       value: stats?.registeredMembers ?? 0,
       icon: Users,
-      color: 'bg-slate-700',
+      iconBg: 'bg-slate-100 text-[#5C5468]',
       sub: `${stats?.totalStudents || 0} Students • ${stats?.totalFaculty || 0} Faculty`,
     },
     {
       label: 'Active Reservations',
       value: stats?.activeReservationsCount ?? 0,
       icon: BookmarkCheck,
-      color: 'bg-amber-600',
-      sub: 'Waitlisted titles',
+      iconBg: 'bg-amber-50 text-[#D98B16]',
+      sub: 'Pending hold requests',
     },
     {
       label: 'Pending Fines',
       value: `₹${stats?.pendingFinesTotal ?? 0}`,
       icon: Receipt,
-      color: 'bg-orange-600',
-      sub: `₹${stats?.collectedFinesTotal ?? 0} collected`,
+      iconBg: 'bg-[#FDE2E7] text-[#F30137]',
+      sub: `₹${stats?.collectedFinesTotal ?? 0} total collected`,
     },
     {
       label: 'Digital Resources',
       value: stats?.totalDigitalResources ?? 0,
       icon: FileText,
-      color: 'bg-teal-600',
-      sub: 'E-Books & Papers',
+      iconBg: 'bg-sky-50 text-[#2563A6]',
+      sub: 'Open E-Books & Papers',
     },
   ];
 
@@ -102,8 +102,10 @@ export const DashboardPage: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">Dashboard Overview</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h1 className="font-heading font-bold text-xl text-[#1A1523] tracking-tight">
+            Dashboard Overview
+          </h1>
+          <p className="font-body text-xs text-[#5C5468] mt-0.5">
             Real-time library operations, circulation tracking, and catalog capacity.
           </p>
         </div>
@@ -136,22 +138,28 @@ export const DashboardPage: React.FC = () => {
           return (
             <div
               key={idx}
-              className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm transition hover:border-slate-300"
+              className="bg-white rounded-xl border border-[#E3DEE9] p-4 shadow-xs transition hover:border-[#4E2478]/30"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                  <p className="font-body text-[11px] font-semibold text-[#5C5468] uppercase tracking-wide">
                     {card.label}
                   </p>
-                  <p className="mt-1 text-2xl font-bold text-slate-800 tracking-tight">
-                    {loading ? <span className="inline-block w-12 h-6 bg-slate-100 animate-pulse rounded" /> : card.value}
+                  <p className="mt-1 font-heading font-bold text-2xl text-[#1A1523] tracking-tight">
+                    {loading ? (
+                      <span className="inline-block w-12 h-6 bg-[#EDE4F5] animate-pulse rounded" />
+                    ) : (
+                      card.value
+                    )}
                   </p>
                 </div>
-                <div className={`w-10 h-10 rounded-lg ${card.color} text-white flex items-center justify-center shrink-0`}>
+                <div
+                  className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center shrink-0 border border-[#E3DEE9]`}
+                >
                   <Icon className="w-5 h-5" />
                 </div>
               </div>
-              <p className="mt-2.5 pt-2 border-t border-slate-100 text-[11px] text-slate-500 font-medium">
+              <p className="mt-2.5 pt-2 border-t border-[#E3DEE9] font-body text-[11px] text-[#5C5468] font-medium">
                 {card.sub}
               </p>
             </div>
@@ -162,33 +170,47 @@ export const DashboardPage: React.FC = () => {
       {/* Daily Library Activity & Recent Circulation */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Daily Activity Log */}
-        <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm lg:col-span-2">
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+        <div className="bg-white rounded-xl border border-[#E3DEE9] p-5 shadow-xs lg:col-span-2">
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#E3DEE9]">
             <div>
-              <h2 className="text-sm font-semibold text-slate-800">Daily Library Activities</h2>
-              <p className="text-xs text-slate-500">Live operational ledger of desk actions</p>
+              <h2 className="font-heading font-semibold text-sm text-[#1A1523] tracking-tight">
+                Daily Library Activities
+              </h2>
+              <p className="font-body text-xs text-[#5C5468]">Live operational ledger of circulation desk actions</p>
             </div>
-            <span className="text-[11px] font-mono text-slate-400">Chronological feed</span>
+            <span className="font-body text-[11px] text-[#5C5468]">Audit log</span>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {stats?.dailyActivities.map((act) => (
               <div
                 key={act.id}
-                className="flex items-start justify-between gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100"
+                className="flex items-start justify-between gap-3 p-3 rounded-lg bg-[#FAF8FC] border border-[#E3DEE9]"
               >
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold text-slate-800">{act.title}</span>
-                    <Badge variant={act.action === 'ISSUE' ? 'info' : act.action === 'RETURN' ? 'success' : act.action === 'RESERVE' ? 'warning' : 'neutral'}>
+                    <span className="font-body text-xs font-semibold text-[#1A1523]">{act.title}</span>
+                    <Badge
+                      variant={
+                        act.action === 'ISSUE'
+                          ? 'primary'
+                          : act.action === 'RETURN'
+                          ? 'success'
+                          : act.action === 'RESERVE'
+                          ? 'warning'
+                          : 'neutral'
+                      }
+                    >
                       {act.action}
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-600 mt-1">{act.details}</p>
+                  <p className="font-body text-xs text-[#5C5468] mt-1">{act.details}</p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="text-[11px] font-medium text-slate-400">{act.actor}</p>
-                  <p className="text-[10px] text-slate-400">{new Date(act.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                  <p className="font-body text-[11px] font-medium text-[#5C5468]">{act.actor}</p>
+                  <p className="font-body text-[10px] text-[#5C5468]/70">
+                    {new Date(act.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </p>
                 </div>
               </div>
             ))}
@@ -196,20 +218,22 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Category Breakdown */}
-        <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm lg:col-span-1">
-          <h2 className="text-sm font-semibold text-slate-800 mb-0.5">Catalog by Category</h2>
-          <p className="text-xs text-slate-500 mb-4">Holdings distribution across disciplines</p>
+        <div className="bg-white rounded-xl border border-[#E3DEE9] p-5 shadow-xs lg:col-span-1">
+          <h2 className="font-heading font-semibold text-sm text-[#1A1523] tracking-tight mb-0.5">
+            Catalog by Category
+          </h2>
+          <p className="font-body text-xs text-[#5C5468] mb-4">Holdings distribution across disciplines</p>
 
           <div className="space-y-3">
             {stats?.categoryDistribution.map((item) => (
               <div key={item.category} className="space-y-1">
-                <div className="flex justify-between text-xs text-slate-700">
+                <div className="flex justify-between font-body text-xs text-[#1A1523]">
                   <span className="font-medium truncate pr-2">{item.category}</span>
-                  <span className="text-slate-500 font-mono shrink-0">{item.count}</span>
+                  <span className="font-heading font-bold text-xs text-[#4E2478] shrink-0">{item.count}</span>
                 </div>
-                <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div className="w-full bg-[#EDE4F5] rounded-full h-1.5 overflow-hidden">
                   <div
-                    className="bg-slate-700 h-1.5 rounded-full"
+                    className="bg-[#4E2478] h-1.5 rounded-full transition-all"
                     style={{
                       width: `${Math.min(
                         100,

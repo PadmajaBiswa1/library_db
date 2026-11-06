@@ -77,43 +77,45 @@ export const FinesPage: React.FC = () => {
     <div className="space-y-5">
       {/* Title */}
       <div>
-        <h1 className="text-xl font-bold text-slate-900 tracking-tight">Fine & Dues Management</h1>
-        <p className="text-xs text-slate-500 mt-0.5">
+        <h1 className="font-heading font-bold text-xl text-[#1A1523] tracking-tight">
+          Fine & Dues Management
+        </h1>
+        <p className="font-body text-xs text-[#5C5468] mt-0.5">
           Automatic overdue fine calculations, damage assessments, payment receipts, and authorized waivers.
         </p>
       </div>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-        <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[11px] font-semibold text-rose-600 uppercase tracking-wide">Pending Dues</p>
-          <p className="mt-1 text-2xl font-bold text-rose-600 font-mono">₹{pendingTotal}</p>
-          <p className="text-[11px] text-slate-400 mt-1">Outstanding unpaid fines</p>
+        <div className="p-4 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[11px] font-semibold text-[#D6264C] uppercase tracking-wide">Pending Dues</p>
+          <p className="mt-1 font-heading font-bold text-2xl text-[#D6264C]">₹{pendingTotal}</p>
+          <p className="font-body text-[11px] text-[#5C5468] mt-1">Outstanding unpaid fines</p>
         </div>
 
-        <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[11px] font-semibold text-emerald-600 uppercase tracking-wide">Total Collected</p>
-          <p className="mt-1 text-2xl font-bold text-emerald-700 font-mono">₹{paidTotal}</p>
-          <p className="text-[11px] text-slate-400 mt-1">Settled payments with receipts</p>
+        <div className="p-4 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[11px] font-semibold text-[#1C8A5C] uppercase tracking-wide">Total Collected</p>
+          <p className="mt-1 font-heading font-bold text-2xl text-[#1C8A5C]">₹{paidTotal}</p>
+          <p className="font-body text-[11px] text-[#5C5468] mt-1">Settled payments with receipts</p>
         </div>
 
-        <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Authorized Waivers</p>
-          <p className="mt-1 text-2xl font-bold text-slate-700 font-mono">₹{waivedTotal}</p>
-          <p className="text-[11px] text-slate-400 mt-1">Medical & official approvals</p>
+        <div className="p-4 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[11px] font-semibold text-[#4E2478] uppercase tracking-wide">Authorized Waivers</p>
+          <p className="mt-1 font-heading font-bold text-2xl text-[#4E2478]">₹{waivedTotal}</p>
+          <p className="font-body text-[11px] text-[#5C5468] mt-1">Medical & official approvals</p>
         </div>
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-1.5 border-b border-slate-200 pb-2">
+      <div className="flex items-center gap-1.5 border-b border-[#E3DEE9] pb-2">
         {['ALL', 'PENDING', 'PAID', 'WAIVED'].map((st) => (
           <button
             key={st}
             onClick={() => setFilter(st)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+            className={`px-3 py-1.5 rounded-lg font-body text-xs font-medium transition ${
               filter === st
-                ? 'bg-slate-900 text-white font-semibold'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                ? 'bg-[#4E2478] text-white font-semibold'
+                : 'bg-white border border-[#E3DEE9] text-[#5C5468] hover:bg-[#EDE4F5]/40'
             }`}
           >
             {st === 'ALL' ? 'All Fines' : st}
@@ -122,10 +124,10 @@ export const FinesPage: React.FC = () => {
       </div>
 
       {/* Fines Table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-[#E3DEE9] shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+          <table className="w-full text-left font-body text-xs">
+            <thead className="bg-[#FAF8FC] border-b border-[#E3DEE9] text-[11px] font-semibold text-[#5C5468] uppercase tracking-wider">
               <tr>
                 <th className="px-4 py-3">Patron & ID</th>
                 <th className="px-4 py-3">Book Title</th>
@@ -136,36 +138,36 @@ export const FinesPage: React.FC = () => {
                 <th className="px-4 py-3 text-right">Settlement</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-[#E3DEE9]">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-8 text-slate-500">
+                  <td colSpan={7} className="text-center py-8 text-[#5C5468]">
                     Loading fines...
                   </td>
                 </tr>
               ) : fines.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-8 text-slate-500">
+                  <td colSpan={7} className="text-center py-8 text-[#5C5468]">
                     No fine records found.
                   </td>
                 </tr>
               ) : (
                 fines.map((fine) => (
-                  <tr key={fine.id} className="hover:bg-slate-50/80 transition-colors">
+                  <tr key={fine.id} className="hover:bg-[#EDE4F5]/30 transition-colors">
                     <td className="px-4 py-3.5">
-                      <p className="font-semibold text-slate-900 leading-tight">{fine.memberName}</p>
-                      <p className="text-[11px] text-slate-500 font-mono">ID: {fine.memberIdentifier}</p>
+                      <p className="font-semibold text-[#1A1523] leading-tight">{fine.memberName}</p>
+                      <p className="text-[11px] text-[#5C5468] font-mono">ID: {fine.memberIdentifier}</p>
                     </td>
-                    <td className="px-4 py-3.5 text-slate-800 font-medium">{fine.bookTitle}</td>
+                    <td className="px-4 py-3.5 text-[#1A1523] font-medium">{fine.bookTitle}</td>
                     <td className="px-4 py-3.5">
-                      <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
+                      <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-[#FAF8FC] text-[#5C5468] border border-[#E3DEE9]">
                         {fine.fineType}
                       </span>
                     </td>
-                    <td className="px-4 py-3.5 font-mono text-slate-600">
+                    <td className="px-4 py-3.5 font-mono text-[#5C5468]">
                       {fine.daysOverdue > 0 ? `${fine.daysOverdue} days` : '—'}
                     </td>
-                    <td className="px-4 py-3.5 font-mono font-bold text-slate-900 text-sm">
+                    <td className="px-4 py-3.5 font-heading font-bold text-[#1A1523] text-sm">
                       ₹{fine.amount}.00
                     </td>
                     <td className="px-4 py-3.5">
@@ -181,7 +183,7 @@ export const FinesPage: React.FC = () => {
                         {fine.status}
                       </Badge>
                       {fine.waivedReason && (
-                        <p className="text-[10px] text-slate-400 mt-0.5 truncate max-w-[150px]">
+                        <p className="text-[10px] text-[#5C5468] mt-0.5 truncate max-w-[150px]">
                           Reason: {fine.waivedReason}
                         </p>
                       )}
@@ -191,7 +193,7 @@ export const FinesPage: React.FC = () => {
                         <div className="flex items-center justify-end gap-1.5">
                           <Button
                             size="sm"
-                            variant="primary"
+                            variant="accent"
                             onClick={() => {
                               setSelectedFine(fine);
                               setIsPayOpen(true);
@@ -213,10 +215,10 @@ export const FinesPage: React.FC = () => {
                         </div>
                       )}
                       {fine.status === 'PAID' && (
-                        <span className="text-[11px] text-emerald-600 font-medium">Paid</span>
+                        <span className="text-[11px] text-[#1C8A5C] font-medium">Paid</span>
                       )}
                       {fine.status === 'WAIVED' && (
-                        <span className="text-[11px] text-slate-400 font-medium">Waived</span>
+                        <span className="text-[11px] text-[#5C5468] font-medium">Waived</span>
                       )}
                     </td>
                   </tr>
@@ -229,34 +231,34 @@ export const FinesPage: React.FC = () => {
 
       {/* Pay Fine Modal */}
       <Modal isOpen={isPayOpen} onClose={() => setIsPayOpen(false)} title="Record Fine Payment Receipt">
-        <form onSubmit={handlePaySubmit} className="space-y-3.5 text-xs">
+        <form onSubmit={handlePaySubmit} className="space-y-3.5 text-xs font-body">
           {selectedFine && (
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-              <p className="font-semibold text-slate-800">{selectedFine.memberName} ({selectedFine.memberIdentifier})</p>
-              <p className="text-xs text-slate-500 mt-0.5">Item: {selectedFine.bookTitle}</p>
-              <p className="text-base font-bold text-slate-900 font-mono mt-2">
+            <div className="p-3 bg-[#FAF8FC] rounded-lg border border-[#E3DEE9]">
+              <p className="font-semibold text-[#1A1523]">{selectedFine.memberName} ({selectedFine.memberIdentifier})</p>
+              <p className="text-xs text-[#5C5468] mt-0.5">Item: {selectedFine.bookTitle}</p>
+              <p className="text-base font-heading font-bold text-[#1A1523] mt-2">
                 Amount Due: ₹{selectedFine.amount}.00
               </p>
             </div>
           )}
 
           <div>
-            <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+            <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">
               Payment Settlement Method
             </label>
             <select
-              className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+              className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
             >
               <option value="CASH">Counter Cash</option>
               <option value="UPI / QR">Campus UPI / QR Code</option>
               <option value="DEBIT_CARD">Debit / Credit Card</option>
-              <option value="STUDENT_ACCOUNT">Adjust against Student Caution Deposit</option>
+              <option value="STUDENT_ACCOUNT">Adjust against Caution Deposit</option>
             </select>
           </div>
 
-          <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#E3DEE9]">
             <Button type="button" variant="outline" size="sm" onClick={() => setIsPayOpen(false)}>
               Cancel
             </Button>
@@ -269,13 +271,13 @@ export const FinesPage: React.FC = () => {
 
       {/* Waive Fine Modal */}
       <Modal isOpen={isWaiveOpen} onClose={() => setIsWaiveOpen(false)} title="Authorize Fine Waiver">
-        <form onSubmit={handleWaiveSubmit} className="space-y-3.5 text-xs">
+        <form onSubmit={handleWaiveSubmit} className="space-y-3.5 text-xs font-body">
           {selectedFine && (
-            <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-amber-800 flex items-start gap-2">
+            <div className="p-3 bg-[#FDE2E7] rounded-lg border border-[#D6264C]/30 text-[#D6264C] flex items-start gap-2">
               <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold">Waiving ₹{selectedFine.amount}.00 for {selectedFine.memberName}</p>
-                <p className="text-[11px] text-amber-700">Waivers are audited and require an official justification.</p>
+                <p className="text-[11px]">Waivers are logged to institutional audit trail.</p>
               </div>
             </div>
           )}
@@ -288,7 +290,7 @@ export const FinesPage: React.FC = () => {
             placeholder="e.g. Approved medical leave certificate / Dean waiver"
           />
 
-          <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#E3DEE9]">
             <Button type="button" variant="outline" size="sm" onClick={() => setIsWaiveOpen(false)}>
               Cancel
             </Button>

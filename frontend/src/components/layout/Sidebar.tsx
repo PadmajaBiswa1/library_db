@@ -67,24 +67,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <>
       {/* Mobile backdrop */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 bg-slate-900/50 md:hidden" onClick={onClose} />
+        <div className="fixed inset-0 z-40 bg-[#1A1523]/60 md:hidden" onClick={onClose} />
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-slate-900 text-slate-100 flex flex-col transition-transform duration-200 ease-in-out md:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-[#38195A] text-[#EDE4F5] flex flex-col transition-transform duration-200 ease-in-out md:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Brand header */}
-        <div className="flex items-center gap-3 px-5 h-16 border-b border-slate-800 shrink-0">
-          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow">
+        <div className="flex items-center gap-3 px-5 h-16 border-b border-[#4E2478] shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-[#4E2478] flex items-center justify-center text-white shadow-xs">
             <Library className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="font-bold text-sm tracking-tight text-white leading-tight">
-              LibraryHub OS
+            <h1 className="font-heading font-bold text-sm tracking-tight text-white leading-tight">
+              LibraryHub
             </h1>
-            <p className="text-[11px] text-slate-400 font-medium">Enterprise Academic</p>
+            <p className="font-body text-[11px] text-[#EDE4F5]/70">Academic OS</p>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <nav className="flex-1 px-3 py-4 space-y-5 overflow-y-auto">
           {navSections.map((sec) => (
             <div key={sec.title} className="space-y-1">
-              <p className="px-3 text-[10px] font-semibold text-slate-400 tracking-wider">
+              <p className="px-3 font-body text-[10px] font-semibold text-[#EDE4F5]/60 tracking-wider">
                 {sec.title}
               </p>
               {sec.items.map((item) => {
@@ -103,10 +103,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                     to={item.href}
                     onClick={() => onClose()}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                      `flex items-center gap-3 px-3 py-2 rounded-lg font-body text-xs transition-colors ${
                         isActive
-                          ? 'bg-blue-600 text-white font-semibold'
-                          : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                          ? 'bg-[#4E2478] text-white font-semibold border-l-4 border-[#F30137]'
+                          : 'text-[#EDE4F5]/85 hover:bg-[#4E2478]/50 hover:text-white font-medium'
                       }`
                     }
                   >
@@ -120,13 +120,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </nav>
 
         {/* System Footer Status */}
-        <div className="p-3.5 border-t border-slate-800 shrink-0">
-          <div className="bg-slate-800/80 rounded-lg p-2.5 flex items-center justify-between text-xs">
+        <div className="p-3.5 border-t border-[#4E2478] shrink-0">
+          <div className="bg-[#4E2478]/50 rounded-lg p-2.5 flex items-center justify-between text-xs">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-slate-300 font-medium">Circulation Engine</span>
+              <span className="w-2 h-2 rounded-full bg-[#1C8A5C] animate-pulse" />
+              <span className="font-body text-[11px] text-[#EDE4F5]">Circulation Engine</span>
             </div>
-            <span className="text-[10px] text-slate-400 font-mono">v2.1</span>
+            <span className="font-body text-[10px] text-[#EDE4F5]/60">Online</span>
           </div>
         </div>
       </aside>

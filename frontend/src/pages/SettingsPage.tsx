@@ -40,7 +40,7 @@ export const SettingsPage: React.FC = () => {
   };
 
   if (loading || !policies) {
-    return <div className="text-center py-12 text-slate-500 text-xs">Loading library policies...</div>;
+    return <div className="text-center py-12 text-[#5C5468] text-xs font-body">Loading library policies...</div>;
   }
 
   return (
@@ -48,14 +48,16 @@ export const SettingsPage: React.FC = () => {
       {/* Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">Library Settings & Policies</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h1 className="font-heading font-bold text-xl text-[#1A1523] tracking-tight">
+            Library Settings & Policies
+          </h1>
+          <p className="font-body text-xs text-[#5C5468] mt-0.5">
             Configure circulation loan rules, fine rates per day, renewal limitations, operational hours, and holiday calendars.
           </p>
         </div>
         {savedSuccess && (
-          <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
-            <Check className="w-4 h-4 text-emerald-600" />
+          <div className="flex items-center gap-1.5 text-xs text-[#1C8A5C] font-body font-medium bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
+            <Check className="w-4 h-4 text-[#1C8A5C]" />
             Policies updated successfully
           </div>
         )}
@@ -64,7 +66,7 @@ export const SettingsPage: React.FC = () => {
       <form onSubmit={handleSave} className="space-y-4">
         {/* Circulation Durations & Limits */}
         <Card title="Borrowing Rules & Loan Durations" subtitle="Role-specific circulation policies">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-body">
             <Input
               label="Student Loan Duration (Days)"
               type="number"
@@ -124,7 +126,7 @@ export const SettingsPage: React.FC = () => {
 
         {/* Fines and Penalties */}
         <Card title="Fines & Penalty Rates" subtitle="Overdue assessment calculations">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-body">
             <Input
               label="Overdue Fine Rate (₹ per day)"
               type="number"
@@ -163,7 +165,7 @@ export const SettingsPage: React.FC = () => {
 
         {/* Library Operational Timings */}
         <Card title="Operating Hours & Access Timings" subtitle="Campus opening and closing schedules">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-body">
             <Input
               label="Weekdays (Mon - Fri)"
               required
@@ -213,11 +215,11 @@ export const SettingsPage: React.FC = () => {
 
         {/* Holiday Schedule */}
         <Card title="Observed Academic Holidays" subtitle="Dates when circulation desk is closed">
-          <div className="space-y-2 text-xs">
+          <div className="space-y-2 text-xs font-body">
             {policies.holidays.map((h, i) => (
-              <div key={i} className="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-lg">
-                <span className="font-semibold text-slate-800">{h.name}</span>
-                <span className="font-mono text-slate-500">{h.date}</span>
+              <div key={i} className="flex items-center justify-between p-2.5 bg-[#FAF8FC] border border-[#E3DEE9] rounded-lg">
+                <span className="font-semibold text-[#1A1523]">{h.name}</span>
+                <span className="font-mono text-[#5C5468]">{h.date}</span>
               </div>
             ))}
           </div>

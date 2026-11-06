@@ -4,9 +4,7 @@ import { Button } from '../components/common/Button';
 import { Input } from '../components/common/Input';
 import { Modal } from '../components/common/Modal';
 import { Badge } from '../components/common/Badge';
-import {
-  Plus,
-} from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 export const InventoryPage: React.FC = () => {
   const [data, setData] = useState<{
@@ -83,8 +81,10 @@ export const InventoryPage: React.FC = () => {
       {/* Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">Inventory & Stock Audit</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h1 className="font-heading font-bold text-xl text-[#1A1523] tracking-tight">
+            Inventory & Stock Audit
+          </h1>
+          <p className="font-body text-xs text-[#5C5468] mt-0.5">
             Physical stock tracking, condition health (good/damaged/lost), restock acquisitions, and discrepancy alerts.
           </p>
         </div>
@@ -104,33 +104,33 @@ export const InventoryPage: React.FC = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        <div className="p-3.5 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Total Volumes</p>
-          <p className="text-xl font-bold text-slate-900 mt-1 font-mono">{data?.summary.totalPhysicalCopies || 0}</p>
+        <div className="p-3.5 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[10px] font-semibold text-[#5C5468] uppercase tracking-wide">Total Volumes</p>
+          <p className="font-heading text-xl font-bold text-[#1A1523] mt-1">{data?.summary.totalPhysicalCopies || 0}</p>
         </div>
-        <div className="p-3.5 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wide">On Shelf</p>
-          <p className="text-xl font-bold text-emerald-600 mt-1 font-mono">{data?.summary.availableOnShelf || 0}</p>
+        <div className="p-3.5 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[10px] font-semibold text-[#1C8A5C] uppercase tracking-wide">On Shelf</p>
+          <p className="font-heading text-xl font-bold text-[#1C8A5C] mt-1">{data?.summary.availableOnShelf || 0}</p>
         </div>
-        <div className="p-3.5 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[10px] font-semibold text-indigo-600 uppercase tracking-wide">Circulating</p>
-          <p className="text-xl font-bold text-indigo-600 mt-1 font-mono">{data?.summary.activelyIssued || 0}</p>
+        <div className="p-3.5 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[10px] font-semibold text-[#4E2478] uppercase tracking-wide">Circulating</p>
+          <p className="font-heading text-xl font-bold text-[#4E2478] mt-1">{data?.summary.activelyIssued || 0}</p>
         </div>
-        <div className="p-3.5 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[10px] font-semibold text-amber-600 uppercase tracking-wide">Damaged Copies</p>
-          <p className="text-xl font-bold text-amber-600 mt-1 font-mono">{data?.summary.damagedCopiesCount || 0}</p>
+        <div className="p-3.5 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[10px] font-semibold text-[#D98B16] uppercase tracking-wide">Damaged Copies</p>
+          <p className="font-heading text-xl font-bold text-[#D98B16] mt-1">{data?.summary.damagedCopiesCount || 0}</p>
         </div>
-        <div className="p-3.5 bg-white rounded-lg border border-slate-200 shadow-sm">
-          <p className="text-[10px] font-semibold text-rose-600 uppercase tracking-wide">Lost / Missing</p>
-          <p className="text-xl font-bold text-rose-600 mt-1 font-mono">{data?.summary.lostCopiesCount || 0}</p>
+        <div className="p-3.5 bg-white rounded-xl border border-[#E3DEE9] shadow-xs">
+          <p className="font-body text-[10px] font-semibold text-[#D6264C] uppercase tracking-wide">Lost / Missing</p>
+          <p className="font-heading text-xl font-bold text-[#D6264C] mt-1">{data?.summary.lostCopiesCount || 0}</p>
         </div>
       </div>
 
       {/* Inventory Items Table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-[#E3DEE9] shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+          <table className="w-full text-left font-body text-xs">
+            <thead className="bg-[#FAF8FC] border-b border-[#E3DEE9] text-[11px] font-semibold text-[#5C5468] uppercase tracking-wider">
               <tr>
                 <th className="px-4 py-3">Book Title & ISBN</th>
                 <th className="px-4 py-3">Shelf Location</th>
@@ -142,40 +142,40 @@ export const InventoryPage: React.FC = () => {
                 <th className="px-4 py-3 text-right">Quick Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-[#E3DEE9]">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="text-center py-8 text-slate-500">
+                  <td colSpan={8} className="text-center py-8 text-[#5C5468]">
                     Loading inventory audit data...
                   </td>
                 </tr>
               ) : !data || data.items.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="text-center py-8 text-slate-500">
+                  <td colSpan={8} className="text-center py-8 text-[#5C5468]">
                     No items in inventory.
                   </td>
                 </tr>
               ) : (
                 data.items.map((item) => (
-                  <tr key={item.bookId} className="hover:bg-slate-50/80 transition-colors">
+                  <tr key={item.bookId} className="hover:bg-[#EDE4F5]/30 transition-colors">
                     <td className="px-4 py-3.5">
-                      <p className="font-semibold text-slate-900 leading-tight">{item.title}</p>
-                      <p className="text-[11px] text-slate-400 font-mono mt-0.5">ISBN: {item.isbn}</p>
+                      <p className="font-semibold text-[#1A1523] leading-tight">{item.title}</p>
+                      <p className="text-[11px] text-[#5C5468] font-mono mt-0.5">ISBN: {item.isbn}</p>
                     </td>
-                    <td className="px-4 py-3.5 font-mono text-[11px] text-slate-600">
+                    <td className="px-4 py-3.5 font-mono text-[11px] text-[#5C5468]">
                       {item.shelfLocation}
                     </td>
-                    <td className="px-4 py-3.5 font-mono font-medium text-emerald-700">
+                    <td className="px-4 py-3.5 font-heading font-semibold text-[#1C8A5C]">
                       {item.conditionGood}
                     </td>
-                    <td className="px-4 py-3.5 font-mono font-medium text-amber-700">
+                    <td className="px-4 py-3.5 font-heading font-semibold text-[#D98B16]">
                       {item.conditionDamaged}
                     </td>
-                    <td className="px-4 py-3.5 font-mono font-medium text-rose-700">
+                    <td className="px-4 py-3.5 font-heading font-semibold text-[#D6264C]">
                       {item.conditionLost}
                     </td>
-                    <td className="px-4 py-3.5 font-mono font-bold text-slate-900">
-                      {item.totalCopies} ({item.availableCopies} avail)
+                    <td className="px-4 py-3.5 font-heading font-bold text-[#1A1523]">
+                      {item.totalCopies} <span className="font-body text-[11px] font-normal text-[#5C5468]">({item.availableCopies} avail)</span>
                     </td>
                     <td className="px-4 py-3.5">
                       <Badge
@@ -212,11 +212,11 @@ export const InventoryPage: React.FC = () => {
 
       {/* Adjust Stock Modal */}
       <Modal isOpen={isAdjustOpen} onClose={() => setIsAdjustOpen(false)} title="Adjust Stock or Report Condition">
-        <form onSubmit={handleAdjustSubmit} className="space-y-3.5 text-xs">
+        <form onSubmit={handleAdjustSubmit} className="space-y-3.5 text-xs font-body">
           <div>
-            <label className="block text-[11px] font-semibold text-slate-700 mb-1">Select Book Title</label>
+            <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">Select Book Title</label>
             <select
-              className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+              className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
               value={selectedBookId}
               onChange={(e) => setSelectedBookId(e.target.value)}
               required
@@ -231,9 +231,9 @@ export const InventoryPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-[11px] font-semibold text-slate-700 mb-1">Action Type</label>
+            <label className="block text-[11px] font-semibold text-[#1A1523] mb-1">Action Type</label>
             <select
-              className="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800"
+              className="w-full rounded-lg border border-[#E3DEE9] bg-white px-2.5 py-1.5 text-xs text-[#1A1523] focus:border-[#4E2478]"
               value={actionType}
               onChange={(e) => setActionType(e.target.value as any)}
             >
@@ -259,7 +259,7 @@ export const InventoryPage: React.FC = () => {
             placeholder="e.g. Annual stock audit verification / Binding repair"
           />
 
-          <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#E3DEE9]">
             <Button type="button" variant="outline" size="sm" onClick={() => setIsAdjustOpen(false)}>
               Cancel
             </Button>
