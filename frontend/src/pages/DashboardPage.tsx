@@ -15,6 +15,7 @@ import {
   Repeat,
   Plus,
   RefreshCw,
+  ArrowUpRight,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -57,7 +58,7 @@ export const DashboardPage: React.FC = () => {
       label: 'Actively Issued',
       value: stats?.issuedBooks ?? 0,
       icon: Clock,
-      iconBg: 'bg-[#EDE4F5] text-[#4E2478]',
+      iconBg: 'bg-sky-50 text-[#2563A6]',
       sub: 'In patron possession',
     },
     {
@@ -92,7 +93,7 @@ export const DashboardPage: React.FC = () => {
       label: 'Digital Resources',
       value: stats?.totalDigitalResources ?? 0,
       icon: FileText,
-      iconBg: 'bg-sky-50 text-[#2563A6]',
+      iconBg: 'bg-teal-50 text-[#0f766e]',
       sub: 'Open E-Books & Papers',
     },
   ];
@@ -138,7 +139,7 @@ export const DashboardPage: React.FC = () => {
           return (
             <div
               key={idx}
-              className="bg-white rounded-xl border border-[#E3DEE9] p-4 shadow-xs transition hover:border-[#4E2478]/30"
+              className="bg-white rounded-xl border border-[#E3DEE9] p-4 shadow-xs hover:shadow-md hover:-translate-y-0.5 hover:border-[#4E2478]/40 transition-all duration-200"
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -154,7 +155,7 @@ export const DashboardPage: React.FC = () => {
                   </p>
                 </div>
                 <div
-                  className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center shrink-0 border border-[#E3DEE9]`}
+                  className={`w-10 h-10 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0 border border-[#E3DEE9] shadow-xs`}
                 >
                   <Icon className="w-5 h-5" />
                 </div>
@@ -178,14 +179,20 @@ export const DashboardPage: React.FC = () => {
               </h2>
               <p className="font-body text-xs text-[#5C5468]">Live operational ledger of circulation desk actions</p>
             </div>
-            <span className="font-body text-[11px] text-[#5C5468]">Audit log</span>
+            <Link
+              to="/circulation"
+              className="font-body text-xs font-semibold text-[#4E2478] hover:text-[#38195A] flex items-center gap-1"
+            >
+              Circulation
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
           <div className="space-y-2.5">
             {stats?.dailyActivities.map((act) => (
               <div
                 key={act.id}
-                className="flex items-start justify-between gap-3 p-3 rounded-lg bg-[#FAF8FC] border border-[#E3DEE9]"
+                className="flex items-start justify-between gap-3 p-3 rounded-lg bg-[#FAF8FC] border border-[#E3DEE9] hover:bg-[#FAF8FC]/80 transition-colors"
               >
                 <div>
                   <div className="flex items-center gap-2">
@@ -219,9 +226,18 @@ export const DashboardPage: React.FC = () => {
 
         {/* Category Breakdown */}
         <div className="bg-white rounded-xl border border-[#E3DEE9] p-5 shadow-xs lg:col-span-1">
-          <h2 className="font-heading font-semibold text-sm text-[#1A1523] tracking-tight mb-0.5">
-            Catalog by Category
-          </h2>
+          <div className="flex items-center justify-between mb-0.5">
+            <h2 className="font-heading font-semibold text-sm text-[#1A1523] tracking-tight">
+              Catalog by Category
+            </h2>
+            <Link
+              to="/books"
+              className="font-body text-xs font-semibold text-[#4E2478] hover:text-[#38195A] flex items-center gap-1"
+            >
+              Browse
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
           <p className="font-body text-xs text-[#5C5468] mb-4">Holdings distribution across disciplines</p>
 
           <div className="space-y-3">
