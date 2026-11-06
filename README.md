@@ -71,34 +71,3 @@ library-management-dashboard/
 └── README.md
 ```
 
----
-
-## Getting Started
-
-### 1. Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-
-### 2. Installation
-Clone the repository and install all workspace dependencies:
-```bash
-git clone https://github.com/PadmajaBiswa1/library_db.git
-cd library_db
-npm run install:all
-```
-
-### 3. Run Development Servers
-Start both the backend REST API and the frontend client concurrently:
-```bash
-npm run dev
-```
-
-- **Frontend Client**: [http://localhost:5173](http://localhost:5173)
-- **Backend REST API**: [http://localhost:5000/api/v1](http://localhost:5000/api/v1)
-- **Health Check**: [http://localhost:5000/health](http://localhost:5000/health)
-
-### 4. Build for Production
-```bash
-npm run build
-```
-Outputs compiled JavaScript in `backend/dist` and optimized static assets in `frontend/dist`.
